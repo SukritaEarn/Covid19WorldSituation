@@ -24,12 +24,12 @@ services:
       context: .
       dockerfile: ./python.dockerfile
     ports:
-      - "8080:8080"
+      - "9000:9000"
     volumes:
       - .:/usr/src/app/
     environment:
       FLASK_ENV: development
-      PORT: 8080
+      PORT: 9000
       FLASK_DEBUG: 1
     networks:
       - web-bridge
@@ -47,7 +47,7 @@ services:
       - /usr/app/node_modules
     restart: always
     ports:
-      - "9000:9000"
+      - "9090:9090"
     networks:
       - web-bridge
 
@@ -61,7 +61,7 @@ services:
       sudo npm cache verify
       && sudo npm install
       && sudo npm i -g openapi-to-graphql-cli
-      && openapi-to-graphql --cors -u http://host.docker.internal:8080/covid-api/v1/ covid-api.yaml
+      && openapi-to-graphql --cors -u http://host.docker.internal:9000/covid-api/v1/ covid-api.yaml
       "
     volumes:
       - ./openapi/:/home/developer
