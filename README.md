@@ -90,6 +90,12 @@ Our group will analyze the covid-19 situation around the world including the tot
 2. Open `Home-Page.html` in any choice of your browser.
 3. Enjoy using web-app
 
+## Jenkins
+Prerequiste: jdk version 1.8
+```
+java -jar jenkins.war
+```
+
 ## Team members
 
 | Name | ID |
