@@ -134,3 +134,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+openapi/.sudo_as_admin_successful
+.gitignore
+openapi/package.json
+openapi/.npm/_cacache/_lastverified
+openapi/package-lock.json
+.npm
+data
+workspace
