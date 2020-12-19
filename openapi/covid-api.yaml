@@ -1,0 +1,326 @@
+openapi: 3.0.0
+info:
+  title: Covid-19 analysis around the world API
+  description:
+    This API provides covid-19 situation including total cases, death cases and recovered cases that occur around the world right now, 
+    and the currency rate of all country in the world, and 
+    Raw data provided by.
+  version: 1.0.0
+servers:
+- url: /covid-api/v1
+paths:
+  /countries:
+    get:
+      summary: Returns a list of countries
+      operationId: controller.get_countries
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+
+  /countries/{countryName}:
+    parameters:
+      - name: countryName
+        in: path
+        required: true
+        schema:
+          type : string
+    get:
+      summary: Returns complete details of specific country
+      operationId: controller.get_country_details
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+
+  /covid19Situation/summary/world:
+    get:
+      summary: Returns covid-19 situation summary of the world in latest date
+      operationId: controller.get_sum_covid19_situation_world_latest
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19WorldSum'
+
+  /covid19Situation/newCases/world:
+    get:
+      summary: Returns covid-19 new cases of the world
+      operationId: controller.get_new_covid19_situation_world
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19WorldNew'
+
+  /covid19Situation/summary/allCountry:
+    get:
+      summary: Returns a list of covid-19 situation summary of all country in latest date
+      operationId: controller.get_sum_covid19_situation_in_all_country_latest
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19CountrySum'
+                
+
+  /covid19Situation/newCases/allCountry:
+    get:
+      summary: Returns a list of covid-19 new cases of all country
+      operationId: controller.get_new_covid19_situation_in_all_country
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19CountryNew'
+
+  /covid19Situation/newCases/{countryName}:
+    parameters:
+      - name: countryName
+        in: path
+        required: true
+        schema:
+          type : string
+    get:
+      summary: Returns a list of covid-19 new cases of specific country
+      operationId: controller.get_new_covid19_situation_in_specific_country
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Covid19CountryNew'
+
+  /currencyRates/details/{countryName}:
+    parameters:
+      - name: countryName
+        in: path
+        required: true
+        schema:
+          type : string
+    get:
+      summary: Returns a currency rate in a specific country
+      operationId: controller.get_currency_rate_in_specific_country
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Currency'
+
+  /currencyRates/unit/{countryName}:
+    parameters:
+      - name: countryName
+        in: path
+        required: true
+        schema:
+          type : string
+    get:
+      summary: Returns a currency unit in a specific country
+      operationId: controller.get_currency_unit_in_specific_country
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CurrencyUnit'
+
+  /covid19Situation/newCases/continent/{cont}:
+    parameters:
+      - name: cont
+        in: path
+        required: true
+        schema:
+          type : string
+    get:
+      summary: Returns a list of covid-19 new cases of specific continent
+      operationId: controller.get_latest_covid19_by_continent
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19Continent'
+
+  /covid19Situation/newCase/currency/peaking:
+    get:
+      summary: Returns a list of covid-19 new cases compare with conrrency when Covid19 is peaking
+      operationId: controller.get_currency_and_new_case_analysis_when_peaking
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19CompareCurrency'
+
+  /covid19Situation/newCase/currency/decreasing:
+    get:
+      summary: Returns a list of covid-19 new cases compare with conrrency when Covid19 is decreasing
+      operationId: controller.get_currency_and_new_case_analysis_when_decreasing
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Covid19CompareCurrency'
+
+components:
+  schemas:
+    Country:
+      type: object
+      properties:
+        countryId:
+          type: integer
+        countryName:
+          type: string
+        countryAlpha2:
+          type: string
+          description: 2-alphabets country code represents each country
+        countryAlpha3:
+          type: string
+          description: 3-alphabets country code represents each country
+
+    Covid19WorldSum:
+      type: object
+      properties:
+        totalCases:
+          type: integer
+        totaldeathCases:
+          type: integer
+        totalrecoveredCases:
+          type: integer
+        date:
+          type: string
+
+    Covid19WorldNew:
+      type: object
+      properties:
+        Location:
+          type: string
+        newCases:
+          type: integer
+        newDeath:
+          type: integer
+        date:
+          type: string
+    
+    Covid19CountrySum:
+      type: object
+      properties:
+        countryId:
+          type: integer
+        countryName:
+          type: string
+        totalCases:
+          type: integer
+        totalDeathCases:
+          type: integer
+        totalRecoveredCases:
+          type: integer
+        population:
+          type: integer
+        date:
+          type: string
+
+    Covid19CountryNew:
+      type: object
+      properties:
+        countryId:
+          type: integer
+        countryName:
+          type: string
+        newCases:
+          type: integer
+        newDeath:
+          type: integer
+        date:
+          type: string
+
+    Currency:
+      type: object
+      properties:
+        countryId:
+          type: integer
+        countryName:
+          type: string
+        currencyRates:
+          type: number
+        currencyUnit:
+          type: string
+        date:
+          type: string
+
+    CurrencyUnit:
+      type: object
+      properties:
+        countryName:
+          type: string
+        currencyUnit:
+          type: string
+
+    Covid19Continent:
+      type: object 
+      properties:
+        countryId:
+          type: integer 
+        continent:
+          type: string
+        countryName:
+          type: string
+        newCase:
+          type: integer
+        date:
+          type: string
+  
+    Covid19CompareCurrency:
+      type: object
+      properties:
+        countryName:
+          type: string
+        currencyRate:
+          type: integer
+        newCase:
+          type: string
+        
