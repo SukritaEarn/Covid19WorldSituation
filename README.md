@@ -95,6 +95,7 @@ Prerequiste: jdk version 1.8
 ```
 java -jar jenkins.war
 ```
+- Then go to http://localhost:8080/ and add new jenkins pipeline then click build now.
 
 ## Team members
 
