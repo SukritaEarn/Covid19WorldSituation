@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: db
+    restart: always
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: iot.cpe.ku.ac.th
+      PMA_USER: b6110545635
+      PMA_PASSWORD: vichyawat.n@ku.th
+    networks:
+      - web-bridge
+
+  web-api:
+    depends_on:
+      - phpmyadmin
+    container_name: web-api
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./python.dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app/
+    environment:
+      FLASK_ENV: development
+      PORT: 8080
+      FLASK_DEBUG: 1
+    networks:
+      - web-bridge
+
+  web:
+    depends_on:
+      - web-api
+    container_name: web
+    build: 
+      context: .
+      dockerfile: ./node.dockerfile
+    command: npm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    restart: always
+    ports:
+      - "9000:9000"
+    networks:
+      - web-bridge
+
+  graph:
+    depends_on:
+      - web-api
+    image: openkbs/jdk-mvn-py3
+    container_name: graph
+    command: > 
+      bash -c "
+      sudo npm cache verify
+      && sudo npm install
+      && sudo npm i -g openapi-to-graphql-cli
+      && openapi-to-graphql --cors -u http://host.docker.internal:8080/covid-api/v1/ covid-api.yaml
+      "
+    volumes:
+      - ./openapi/:/home/developer
+    ports:
+      - "3000:3000"
+    networks:
+      - web-bridge
+      
+networks:
+  web-bridge:
