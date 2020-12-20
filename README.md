@@ -110,10 +110,8 @@ Our group will analyze the covid-19 situation around the world including the tot
 ## Pages
 All pages provide in this project including
 - [Application Interface](#access-api-page)
-- [Covid-19 Web App](#access-covid-19-web-app)
-- [Database Service using MySQL](#access-database-service)
+- Covid-19 Web App
 - [Jenkins](#access-jenkins)
-- [Node-RED](#access-node-red)
 
 ## Access API page
 1. Start the REST API server and Optionally test the API at
