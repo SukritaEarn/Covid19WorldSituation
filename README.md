@@ -40,7 +40,11 @@ Our group will analyze the covid-19 situation around the world including the tot
     YOUR_DIRECTORY/Covid19AroundAsia/ $
    ```
 3. You need to have Docker installed on your local machine. Make sure that you can call `docker` command via your command tool.
-4. Run
+4. Generate openapi with covid-api.yaml
+   ```
+   java -jar openapi-generator-cli-4.3.1.jar generate -i openapi/covid-api.yaml -o autogen -g python-flask
+   ```
+5. Run
     ```
     docker-compose up
     ```
