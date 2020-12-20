@@ -92,7 +92,6 @@ Our group will analyze the covid-19 situation around the world including the tot
    ```
    py app.py
    ```
-   .
 7. Open second window command line. Open GraphQL accessible by this command.
     ```
    openapi-to-graphql --cors -u http://localhost:9000/covid-api/v1/ openapi/covid-api.yaml
