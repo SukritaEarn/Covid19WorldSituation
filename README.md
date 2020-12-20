@@ -115,11 +115,8 @@ java -jar jenkins.war
 
 | Name | ID |
 |-----|-------|
+| Kritpawit Soongswang | 6110545414 |
 | Vichyawat Nakrugsa | 6110545635 |
 | Tiranan Emson | 6110546003 |
 | Sukrita Kittipitayakorn | 6110546062 |
 | Kasidis Luangwutiwong | 6110546364 |
-
-## Project Documents
-
-* [Project Proposal](https://docs.google.com/document/d/18GtP0rLPiUKCUFxaS5H0ibUgyyp8HK8oZGXdNV5zEKM/edit)
