@@ -112,18 +112,12 @@ All pages provide in this project including
 2. Open `Home-Page.html` in any choice of your browser.
 3. Enjoy using web-app
 
-## Access Database Service
-
-
 ## Access Jenkins
 Prerequiste: jdk version 1.8
 ```
 java -jar jenkins.war
 ```
 - Then go to http://localhost:8080/ and add new jenkins pipeline then click build now.
-
-## Access Node-RED
-
 
 ## Team members
 
