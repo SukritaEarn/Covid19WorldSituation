@@ -11,12 +11,12 @@ Our group will analyze the covid-19 situation around the world including the tot
 - The last source will provide the currency rate in each country.
 
 # Installation
-- If you want to run on provided environment you can use only Docker. You can follow these steps: [Installation using Docker](#option-1:-installation-using-docker)
+- If you want to run on provided environment you can use only Docker. You can follow these steps: [Installation using Docker](#option-1-installation-using-docker)
 - However, if you want to run on your own environment you will need
     - Python version 3.6 or greater
     - Node.js
     - Java
-  Then follow these steps: [Installation using your own environment](#option-2:-installation-using-your-own-environment)
+  Then follow these steps: [Installation using your own environment](#option-2-installation-using-your-own-environment)
 
 ## Option 1: Installation using Docker
 1. Clone or download the project to your machine.
