@@ -10,12 +10,26 @@ Our group will analyze the covid-19 situation around the world including the tot
 - The third source will provide the country detail around the world. 
 - The last source will provide the currency rate in each country.
 
-## Requirement
-- Python version 3.6 or greater is required.
-- Node.js
-- Java
+# Installation
+- If you want to run on provided environment you can use only Docker. You can follow these steps: [Installation using Docker](#option-1:-installation-using-docker)
+- However, if you want to run on your own environment you will need
+    - Python version 3.6 or greater
+    - Node.js
+    - Java
+  Then follow these steps: [Installation using your own environment](#option-2:-installation-using-your-own-environment)
 
-## Installation
+## Option 1: Installation using Docker
+1. Clone or download the project to your machine.
+2. Access to project directory. For example,
+    ```
+    YOUR_DIRECTORY/Covid19AroundAsia/ $
+   ```
+3. You need to have Docker installed on your local machine. Make sure that you can call `docker` command via your command tool.
+4. Run
+    ```
+    docker-compose up
+    ```
+## Option 2: Installation using your own environment
 1. Clone or download the project to your machine.
 2. Install Flask framework. Use command line tools.
 
@@ -66,7 +80,7 @@ Our group will analyze the covid-19 situation around the world including the tot
    ```
    Default port is 8080. You can change to your port that you open python local server.
 
-## How to Open API 
+# Open API page
 1. Start the REST API server and Optionally test the API at
    ```
    http://localhost:8080/covid-api/v1/ui/
@@ -82,7 +96,7 @@ Our group will analyze the covid-19 situation around the world including the tot
    - /currencyRates/unit/{countryName}
    - /currencyRates/{countryName}
 
-## Open Covid-19 Web App
+# Open Covid-19 Web App
 1. After do the installation, access to this directory.
     ```
    YOUR_DIRECTORY/Covid19AroundAsia/html
@@ -90,17 +104,12 @@ Our group will analyze the covid-19 situation around the world including the tot
 2. Open `Home-Page.html` in any choice of your browser.
 3. Enjoy using web-app
 
-## Jenkins
+# Jenkins
 Prerequiste: jdk version 1.8
 ```
 java -jar jenkins.war
 ```
 - Then go to http://localhost:8080/ and add new jenkins pipeline then click build now.
-
-## Docker
-```
-docker-compose up
-```
 
 ## Team members
 
